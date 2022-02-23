@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useGithubData } from "../../hooks/useGithubData";
 import * as S from "./styles";
 
 export function Header() {
+  const { searchGithubUser } = useGithubData();
   const [username, setUsername] = useState("");
 
   function handleChange(e) {
@@ -10,6 +12,7 @@ export function Header() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    searchGithubUser(username);
   }
 
   return (

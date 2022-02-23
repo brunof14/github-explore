@@ -1,33 +1,35 @@
+import { useGithubData } from "../../hooks/useGithubData";
 import * as S from "./styles";
 
 export function Profile() {
+  const {
+    githubData: { user },
+  } = useGithubData();
+
   return (
     <S.Wrapper>
       <S.Info>
-        <img
-          src="https://avatars.githubusercontent.com/u/50248121?v=4"
-          alt="brunof14"
-        />
-        <figcaption>Bruno Felipe</figcaption>
+        <img src={user.avatar} alt={user.name} />
+        <figcaption>{user.name}</figcaption>
 
-        <S.Link href="https://github.com/brunof14">brunof14</S.Link>
+        <S.Link href={user.htmlUrl}>{user.login}</S.Link>
       </S.Info>
       <S.Statistics>
         <div>
           <p>Followers</p>
-          <span>21504</span>
+          <span>{user.followers}</span>
         </div>
         <div>
-          <p>Followers</p>
-          <span>21504</span>
+          <p>Following</p>
+          <span>{user.following}</span>
         </div>
         <div>
-          <p>Followers</p>
-          <span>21504</span>
+          <p>Gists</p>
+          <span>{user.publicGists}</span>
         </div>
         <div>
-          <p>Followers</p>
-          <span>21504</span>
+          <p>Repos</p>
+          <span>{user.publicRepos}</span>
         </div>
       </S.Statistics>
     </S.Wrapper>

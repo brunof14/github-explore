@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useGithubData } from "../../hooks/useGithubData";
 import * as S from "./styles";
 export function Repositories() {
+  const { githubData } = useGithubData();
   const [typeRepositoryView, setTypeRepositoryView] = useState("repository");
 
   function handleSwitchTo(typeToView) {
@@ -8,6 +10,16 @@ export function Repositories() {
       if (typeToView === typeRepositoryView) return;
       setTypeRepositoryView(typeToView);
     };
+  }
+
+  function makeRepositoriesList(repos) {
+    return repos.map((repo) => (
+      <article key={repo.id}>
+        <h2>{repo.name}</h2>
+        <p>{repo.description}</p>
+        <S.Link href={repo.htmlUrl}>link-to-repo</S.Link>
+      </article>
+    ));
   }
 
   return (
@@ -30,26 +42,11 @@ export function Repositories() {
       </S.SwitchTabsWrapper>
 
       <S.Repositories>
-        <article>
-          <h2>electron-typescript-react</h2>
-          <p>An Electron boilerplate including Typescript, Jest and ESlint</p>
-          <S.Link>link-to-repo</S.Link>
-        </article>
-        <article>
-          <h2>electron-typescript-react</h2>
-          <p>An Electron boilerplate including Typescript, Jest and ESlint</p>
-          <S.Link>link-to-repo</S.Link>
-        </article>
-        <article>
-          <h2>electron-typescript-react</h2>
-          <p>An Electron boilerplate including Typescript, Jest and ESlint</p>
-          <S.Link>link-to-repo</S.Link>
-        </article>
-        <article>
-          <h2>electron-typescript-react</h2>
-          <p>An Electron boilerplate including Typescript, Jest and ESlint</p>
-          <S.Link>link-to-repo</S.Link>
-        </article>
+        {makeRepositoriesList(
+          typeRepositoryView === "repository"
+            ? githubData.repositories
+            : githubData.starredRepositories
+        )}
       </S.Repositories>
     </S.Wrapper>
   );
