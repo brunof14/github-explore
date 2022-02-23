@@ -61,6 +61,11 @@ export const GlobalStyles = createGlobalStyle`
   html {
     font-size: 62.5%;
   }
+  @media (max-width: 720px) {
+    html {
+      font-size: 50%;
+    }
+  }
 
   body, input, button {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

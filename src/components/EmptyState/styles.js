@@ -12,6 +12,7 @@ export const Wrapper = styled.section`
 
   img {
     display: block;
+    max-width: 100%;
     margin-bottom: 4.8rem;
   }
 
@@ -20,10 +21,12 @@ export const Wrapper = styled.section`
     font-weight: 500;
     color: var(--gray-950);
     margin-bottom: 1.4rem;
+    text-align: center;
   }
 
   p {
     font-size: 1.8rem;
     color: var(--gray-700);
+    text-align: center;
   }
 `;

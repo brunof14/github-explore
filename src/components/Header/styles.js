@@ -11,6 +11,14 @@ export const FormSearchUser = styled.form`
   align-items: flex-end;
   gap: 1.6rem;
 
+  @media (max-width: 420px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+
   > div {
     display: flex;
     flex-direction: column;
