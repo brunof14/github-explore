@@ -3,7 +3,7 @@ import { useGithubData } from "../../hooks/useGithubData";
 import * as S from "./styles";
 
 export function Header() {
-  const { searchGithubUser } = useGithubData();
+  const { searchGithubUser, isLoading } = useGithubData();
   const [username, setUsername] = useState("");
 
   function handleChange(e) {
@@ -27,7 +27,7 @@ export function Header() {
             value={username}
           />
         </div>
-        <button type="submit">Search</button>
+        <button type="submit">{isLoading ? <S.Loading /> : "Search"}</button>
       </S.FormSearchUser>
     </S.Wrapper>
   );

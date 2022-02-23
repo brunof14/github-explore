@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.header`
   padding: 4rem 0 6rem;
@@ -48,6 +48,9 @@ export const FormSearchUser = styled.form`
   }
 
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 500;
     border: none;
     background-color: var(--blue-500);
@@ -67,4 +70,23 @@ export const FormSearchUser = styled.form`
     border-radius: var(--border-radius);
     transition: box-shadow var(--transition-time);
   }
+`;
+
+const infiniteRotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+export const Loading = styled.div`
+  --size: 2.4rem;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid var(--blue-300);
+  border-top: 2px solid var(--white);
+  border-radius: 50%;
+  animation: ${infiniteRotate} 1s infinite;
 `;
